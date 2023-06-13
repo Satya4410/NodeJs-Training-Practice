@@ -170,59 +170,7 @@ var app=http.createServer((request,response)=>{
         }
     }else
 
-    //  Draft : ADD BOOK 
-
-    // if (request.method == "POST") {
-    //     if (request.url == "/book") {
-    //          var fullData = "";
-    //          request.on("data", (chunk) => {
-    //               fullData += chunk.toString();
-    //          })
-    //          request.on("end", () => {
-    //               var bookToBeInserted = JSON.parse(fullData);
-    //               console.log(bookToBeInserted);
-                  
-    //               var obj;
-    //               fs.readFile('books.json', 'utf8', function (err, data) {
-    //                    if (err) throw err;
-    //                    obj = JSON.parse(data);
-    //                    var pos = obj.findIndex(item => item.bookId == bookToBeInserted.bookId);
-    //                    console.log(pos);
-    //                    if (pos >= 0) {
-    //                         response.end("Book Id already exists. Insertion could not be done");
-
-                            
-    //                    }
-    //                    else {
-    //                         obj.push(bookToBeInserted);
-    //                         //it is not necessary, I used for sorting only
-    //                         obj.sort(function(a, b) { 
-    //                              return a.bookId - b.bookId ;
-    //                            }); 
-
-    //                         fs.writeFile("books.json", JSON.stringify(obj, null, 2), (err) => {
-    //                              if (err) {
-    //                                  console.log(`Error during the write operation : ${err}`);
-    //                              }
-    //                              else {
-    //                                  console.log("Write into the file is successful")
-    //                                                                        response.end(JSON.stringify(obj));
-    //                              }
-    //                          })
-
-    //                         //response.end(JSON.stringify(obj));
-    //                    }
-    //               });
-
-    //          })
-    //          request.on("error", (err) => {
-    //               response.statusCode = 401;
-    //               response.end(`Error : ${err}`);
-    //          })
-    //     }
-
-
-
+    
 
     // GET METHOD 
 

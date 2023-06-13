@@ -1,0 +1,46 @@
+const express = require('express');
+const app = express();
+app.use(express.json());
+
+let todos = [];
+
+// Create (Add a new task to the todo list)
+app.post('/todos', (req, res) => {
+  const { description } = req.body;
+  const newTodo = { id: Date.now(), description };
+  todos.push(newTodo);
+  res.status(201).json(newTodo);
+});
+
+// Read (List all tasks)
+app.get('/todos', (req, res) => {
+  res.json(todos);
+});
+
+// Update (Marking a task as complete)
+app.put('/todos/:id', (req, res) => {
+  const { id } = req.params;
+  const todo = todos.find(todo => todo.id === parseInt(id));
+  if (todo) {
+    todo.completed = true;
+    res.json(todo);
+  } else {
+    res.status(404).json({ error: 'Todo not found' });
+  }
+});
+
+// Delete (Remove a task)
+app.delete('/todos/:id', (req, res) => {
+  const { id } = req.params;
+  const todoIndex = todos.findIndex(todo => todo.id === parseInt(id));
+  if (todoIndex !== -1) {
+    const deletedTodo = todos.splice(todoIndex, 1);
+    res.json(deletedTodo[0]);
+  } else {
+    res.status(404).json({ error: 'Todo not found' });
+  }
+});
+
+app.listen(3000, () => {
+  console.log('Server started on port 3000');
+});
